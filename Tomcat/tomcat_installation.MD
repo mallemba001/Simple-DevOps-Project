@@ -3,17 +3,37 @@
 ### Pre-requisites
 1. EC2 instance with Java v1.8.x 
 
+yum install java-1.8*
+
+set path for java 
+cd ~
+vi .bash_profile
+add 
+
+JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.272.b10-1.amzn2.0.1.x86_64
+
+PATH=$PATH:$HOME/bin:$JAVA_HOME
+
+
 ### Install Apache Tomcat
 1. Download tomcat packages from  https://tomcat.apache.org/download-80.cgi onto /opt on EC2 instance
    ```sh 
    # Create tomcat directory
    cd /opt
-   wget http://mirrors.fibergrid.in/apache/tomcat/tomcat-8/v8.5.35/bin/apache-tomcat-8.5.35.tar.gz
-   tar -xvzf /opt/apache-tomcat-8.5.35.tar.gz
+   wget http://mirrors.fibergrid.in/apache/tomcat/tomcat-8/v8.5.35/bin/apache-tomcat-8.5.35.tar.gz  - old
+   
+   wget https://downloads.apache.org/tomcat/tomcat-8/v8.5.63/bin/apache-tomcat-8.5.63.tar.gz  - latest
+   
+   tar -xvzf /opt/apache-tomcat-8.5.35.tar.gz -- old
+   
+   tar -xvzf apache-tomcat-8.5.63.tar.gz  -- latest
+
+   mv apache-tomcat-8.5.63 tomcat
+  
    ```
 1. give executing permissions to startup.sh and shutdown.sh which are under bin. 
    ```sh
-   chmod +x /opt/apache-tomcat-8.5.35/bin/startup.sh 
+   chmod +x /opt/apache-tomcat-8.5.35/bin/startup.sh   -- old
    shutdown.sh
    ```
 
